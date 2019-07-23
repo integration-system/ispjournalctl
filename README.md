@@ -8,10 +8,10 @@
 Внешняя конфигурация отсутствует
 ## Использование
 ### Чтение локальных файлов журналов
-```
+```sh
 ispjournalctl local -h
 ```
-```
+```sh
 Read isp journal file on local machine
 
 Usage:
@@ -33,17 +33,17 @@ Flags:
 Результаты записываются в `stdout` построчно, в указнном формате.
 
 #### Пример
-```
+```sh
 ispjournalctl local --gz  --out json --level OK --level ERROR --file "10.15.27.48__2019-07-10T06-59-45.655.log.gz"
 ```
 ```json
 {"moduleName":"example","host":"111.15.29.48","event":"test","level":"OK","time":"2019-07-09T11:08:32.542+00:00","request":"{\n\t\"objId\": \"e5d7c9ae-93ef-4a12-b35c-e4199d6fd3ec\"\n}","response":"{\"timestamp\":1562670512,\"random\":521507349,\"secureHash\":\"3d439713b59e103e0ccd31a7cb9de12f3433fd814f2ae75632261e485b42b4c0\",\"code\":[14],\"desc\":\"OK\"}"}
 {"moduleName":"example","host":"111.15.29.48","event":"test","level":"OK","time":"2019-07-09T11:08:47.936+00:00","request":"{\n\t\"objId\": \"92cb4330-ad2c-11e9-a2a3-2a2ae2dbcce4\"\n}","response":"{\"timestamp\":1562670527,\"random\":719003178,\"secureHash\":\"11094cfa98f983b12150c2936480160f692b21986afabcea06a70074a562e0c8\",\"code\":[14],\"desc\":\"OK\"}"}
 ```
-```
+```sh
 ispjournalctl local --gz --file "10.15.27.48__2019-07-10T06-59-45.655.log.gz"
 ```
-```
+```csv
 module_name;host;event;level;time;request;response;error_text
 example;111.15.29.48;test;OK;2019-07-09T11:08:32.542+00:00;"{
         ""objId"": ""e5d7c9ae-93ef-4a12-b35c-e4199d6fd3ec""
