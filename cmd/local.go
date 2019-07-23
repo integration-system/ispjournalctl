@@ -32,13 +32,13 @@ type localCmdCfg struct {
 }
 
 func init() {
-	localCmd.Flags().String("file", "", "target file to read")
+	localCmd.Flags().String("file", "", "source file to read")
 	localCmd.Flags().Bool("gz", false, "source file is gzipped")
 	localCmd.Flags().IntP("n", "n", 10, "log entries count from start, -1 - read all")
 	localCmd.Flags().String("since", "", "since time in format 2018-06-15 [08:15:00]")
 	localCmd.Flags().String("until", "", "until time in format 2018-06-15 [08:15:00]")
-	localCmd.Flags().StringSlice("event", []string{}, "filtered events, format: [--event='file1' --event='file2']")
-	localCmd.Flags().StringSlice("level", []string{}, "filtered log levels, format: [--level='OK' --level='WARN', --level='ERROR']")
+	localCmd.Flags().StringSlice("event", []string{}, "filtered events, format: [--event='event1' --event='event2'], empty: show all")
+	localCmd.Flags().StringSlice("level", []string{}, "filtered log levels, format: [--level='OK' --level='WARN', --level='ERROR'], empty: show all")
 	localCmd.Flags().StringP("out", "o", "csv", "output format in csv with ';' or json, example: --out='csv'")
 
 	if err := viper.BindPFlags(localCmd.Flags()); err != nil {
