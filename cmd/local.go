@@ -14,7 +14,7 @@ import (
 
 var (
 	localCmd = &cobra.Command{
-		Use:   "local",
+		Use:   "read",
 		Short: "Read isp journal file on local machine",
 		RunE:  localRun,
 	}
@@ -34,7 +34,7 @@ type localCmdCfg struct {
 func init() {
 	localCmd.Flags().String("file", "", "source file to read")
 	localCmd.Flags().Bool("gz", false, "source file is gzipped")
-	localCmd.Flags().IntP("n", "n", 10, "log entries count from start, -1 - read all")
+	localCmd.Flags().IntP("n", "n", -1, "log entries count from start, default: read all")
 	localCmd.Flags().String("since", "", "since time in format 2018-06-15 [08:15:00]")
 	localCmd.Flags().String("until", "", "until time in format 2018-06-15 [08:15:00]")
 	localCmd.Flags().StringSlice("event", []string{}, "filtered events, format: [--event='event1' --event='event2'], empty: show all")

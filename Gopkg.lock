@@ -61,22 +61,22 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:5760e4560df97aebd55ec4ebbf2a20c0f5beb032ea97309189b87a0071d81c23"
+  digest = "1:9b7cbba3fe2efd27a291295e19a3731cd7bb1e0dcb6f41883e95b74f4ba0e09e"
   name = "github.com/integration-system/isp-io"
   packages = ["."]
   pruneopts = "UT"
-  revision = "dd98bf2f933e1400ed6640fcfc154785e20a5e22"
+  revision = "3daf588d878f287976f55a53917d535f787b7d64"
 
 [[projects]]
-  digest = "1:692906e2a82455725e9d1604e113731c58a4ceb180409015c2e8cab193d15100"
+  digest = "1:1c3fc474e83980205ee8bab94c650b43fb38aba89b785d5634614027ce50fd07"
   name = "github.com/integration-system/isp-journal"
   packages = [
     "entry",
     "search",
   ]
   pruneopts = "UT"
-  revision = "6309b50c301ebf5af5624e9bf06ee3e4a5b79004"
-  version = "v1.1.0"
+  revision = "2b0c9346bef3a5490e0fc597f564a655d8f63154"
+  version = "v1.1.1"
 
 [[projects]]
   digest = "1:5e1967b7b04a6fd52bb1b18f26f551b720bf7ae78acdaaa0533daaa5b74925dc"
@@ -261,7 +261,7 @@
   name = "golang.org/x/net"
   packages = ["context"]
   pruneopts = "UT"
-  revision = "da137c7871d730100384dbcf36e6f8fa493aef5b"
+  revision = "ca1201d0de80cfde86cb01aea620983605dfe99b"
 
 [[projects]]
   branch = "master"
