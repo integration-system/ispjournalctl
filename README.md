@@ -27,7 +27,7 @@ Flags:
       --gz              source file is gzipped
   -h, --help            help for read
       --level strings   filtered log levels, format: [--level='OK' --level='WARN', --level='ERROR'], empty: show all
-  -n, --n int           log entries count from start, -1 - read all (default 10)
+  -n, --n int           log entries count from start, defautl: read all
   -o, --out string      output format in csv with ';' or json, example: --out='csv' (default "csv")
       --since string    since time in format 2018-06-15 [08:15:00]
       --until string    until time in format 2018-06-15 [08:15:00]
