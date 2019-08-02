@@ -85,7 +85,7 @@ example;111.15.29.48;test;OK;2019-07-09T11:08:47.936+00:00;"{
 
 
 ```sh
-ispjournalctl search --gate '127.0.0.1:0000' --module 'example' --out 'csv'
+ispjournalctl search --gate '127.0.0.1:9003' --module 'example' --out 'csv'
 ```
 ```csv
 example;111.15.29.48;test;OK;2019-07-09T11:08:32.542+00:00;"{
