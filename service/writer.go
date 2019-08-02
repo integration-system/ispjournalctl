@@ -3,11 +3,13 @@ package service
 import (
 	"fmt"
 	"github.com/integration-system/isp-journal/entry"
+	"github.com/integration-system/isp-journal/search"
 	"io"
 )
 
 type Writer interface {
-	Write(entry *entry.Entry) error
+	WriteRead(entry *entry.Entry) error
+	WriteSearch(entry *search.SearchResponse) error
 	io.Closer
 }
 

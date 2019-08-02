@@ -3,6 +3,7 @@ package service
 import (
 	"encoding/csv"
 	"github.com/integration-system/isp-journal/entry"
+	"github.com/integration-system/isp-journal/search"
 	"io"
 )
 
@@ -26,7 +27,7 @@ func NewCsvWriter(wr io.WriteCloser) Writer {
 	}
 }
 
-func (w *csvWriter) Write(entry *entry.Entry) error {
+func (w *csvWriter) WriteRead(entry *entry.Entry) error {
 	if !w.headerWritten {
 		if err := w.csvWr.Write(headers); err != nil {
 			return err
@@ -42,6 +43,27 @@ func (w *csvWriter) Write(entry *entry.Entry) error {
 		entry.Time,
 		string(entry.Request),
 		string(entry.Response),
+		entry.ErrorText,
+	}
+	return w.csvWr.Write(row)
+}
+
+func (w *csvWriter) WriteSearch(entry *search.SearchResponse) error {
+	if !w.headerWritten {
+		if err := w.csvWr.Write(headers); err != nil {
+			return err
+		}
+		w.headerWritten = true
+	}
+
+	row := []string{
+		entry.ModuleName,
+		entry.Host,
+		entry.Event,
+		entry.Level,
+		entry.Time,
+		entry.Request,
+		entry.Response,
 		entry.ErrorText,
 	}
 	return w.csvWr.Write(row)

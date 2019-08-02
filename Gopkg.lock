@@ -61,6 +61,14 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:abd0cd78d6d27a98080f2b2a7fd39bb2f3d3eef6aa20c720093129f04fb41d78"
+  name = "github.com/integration-system/gowsdl"
+  packages = ["soap"]
+  pruneopts = "UT"
+  revision = "368713356c71961354e09ab9b734740ebdd94784"
+
+[[projects]]
+  branch = "master"
   digest = "1:9b7cbba3fe2efd27a291295e19a3731cd7bb1e0dcb6f41883e95b74f4ba0e09e"
   name = "github.com/integration-system/isp-io"
   packages = ["."]
@@ -68,37 +76,59 @@
   revision = "3daf588d878f287976f55a53917d535f787b7d64"
 
 [[projects]]
-  digest = "1:1c3fc474e83980205ee8bab94c650b43fb38aba89b785d5634614027ce50fd07"
+  branch = "master"
+  digest = "1:c9c4bc8a6ca2ae80458d630bc0ebe2bb8f434c81fd9c058a0cc0410f4084e706"
   name = "github.com/integration-system/isp-journal"
   packages = [
+    "client",
     "entry",
     "search",
   ]
   pruneopts = "UT"
-  revision = "2b0c9346bef3a5490e0fc597f564a655d8f63154"
-  version = "v1.1.1"
+  revision = "d5a4a5c363358c5d554fd3c515dbd3d970a23276"
 
 [[projects]]
-  digest = "1:5e1967b7b04a6fd52bb1b18f26f551b720bf7ae78acdaaa0533daaa5b74925dc"
+  digest = "1:18c37297dcf9a1506c5feb3ae8c7134aae2a7a108ddd79f92549758d898c5d08"
   name = "github.com/integration-system/isp-lib"
   packages = [
+    "http",
     "logger",
     "utils",
   ]
   pruneopts = "UT"
-  revision = "9d583f86516f92e855d15de30ff0dd40bb2a2ab2"
-  version = "v1.5.1"
+  revision = "d2cc77b8fb8648ae7f8efdf1d1b834e8e57b56d7"
+  version = "v1.5.2"
 
 [[projects]]
-  digest = "1:e4f630893d2bbf8c268eba14e7cc92ef8844ee259a45e21ea77cf7656544cb7e"
+  digest = "1:ac7f1061abc812a5d0de6df7e3f477cef942aef503848f436da0f0eb2603bfbf"
   name = "github.com/json-iterator/go"
   packages = [
     ".",
     "extra",
   ]
   pruneopts = "UT"
-  revision = "0ff49de124c6f76f8494e194af75bde0f1a49a29"
-  version = "v1.1.6"
+  revision = "27518f6661eba504be5a7a9a9f6d9460d892ade3"
+  version = "v1.1.7"
+
+[[projects]]
+  digest = "1:823dc0f8e4cdad8d91e6aba4cdd985a035596a8aa02e9d2abf1bec347894c41f"
+  name = "github.com/klauspost/compress"
+  packages = [
+    "flate",
+    "gzip",
+    "zlib",
+  ]
+  pruneopts = "UT"
+  revision = "23256797d1e4ccac36fad828362cdfef5b3aeb90"
+  version = "v1.7.4"
+
+[[projects]]
+  digest = "1:923c4d7194b42e054b2eb8a6c62824ac55e23ececc1c7e48d4da69c971c55954"
+  name = "github.com/klauspost/cpuid"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "05a8198c0f5a27739aec358908d7e12c64ce6eb7"
+  version = "v1.2.1"
 
 [[projects]]
   digest = "1:31e761d97c76151dde79e9d28964a812c46efc5baee4085b86f68f0c654450de"
@@ -240,6 +270,26 @@
   version = "v1.4.0"
 
 [[projects]]
+  digest = "1:c468422f334a6b46a19448ad59aaffdfc0a36b08fdcc1c749a0b29b6453d7e59"
+  name = "github.com/valyala/bytebufferpool"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "e746df99fe4a3986f4d4f79e13c1e0117ce9c2f7"
+  version = "v1.0.0"
+
+[[projects]]
+  branch = "master"
+  digest = "1:14263f971ab2057d9d8e0e47a5c9af0ae482c4d2530c47f86e8a247046d5df8e"
+  name = "github.com/valyala/fasthttp"
+  packages = [
+    ".",
+    "fasthttputil",
+    "stackless",
+  ]
+  pruneopts = "UT"
+  revision = "55ea350c55431331ff77defe5f450331577f64dd"
+
+[[projects]]
   digest = "1:39a425f98fb19427061a693fe6bf0683c9bddec4b25b17067e34fdb465e39cb9"
   name = "github.com/x-cray/logrus-prefixed-formatter"
   packages = ["."]
@@ -265,14 +315,14 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:31d44814b45607afa77c6e8ef20ea8bacc1d1053fe084440c874f311732e7ec3"
+  digest = "1:16c3c95c0f98e5bff7c863065da66f1e747bced6f101281c041060830842ebc1"
   name = "golang.org/x/sys"
   packages = [
     "unix",
     "windows",
   ]
   pruneopts = "UT"
-  revision = "fae7ac547cb717d141c433a2a173315e216b64c4"
+  revision = "cbf593c0f2f39034e9104bbf77e2ec7c48c98fc5"
 
 [[projects]]
   digest = "1:1093f2eb4b344996604f7d8b29a16c5b22ab9e1b25652140d3fede39f640d5cd"
@@ -298,7 +348,7 @@
     "googleapis/rpc/status",
   ]
   pruneopts = "UT"
-  revision = "c506a9f9061087022822e8da603a52fc387115a8"
+  revision = "fa694d86fc64c7654a660f8908de4e879866748d"
 
 [[projects]]
   digest = "1:caa836d207326da987daf8eb4404ef80806fb843056367d2c3c1636f57ede119"
@@ -313,8 +363,8 @@
     "status",
   ]
   pruneopts = "UT"
-  revision = "1d89a3c832915b2314551c1d2a506874d62e53f7"
-  version = "v1.22.0"
+  revision = "045159ad57f3781d409358e3ade910a018c16b30"
+  version = "v1.22.1"
 
 [[projects]]
   digest = "1:4d2e5a73dc1500038e504a8d78b986630e3626dc027bc030ba5c75da257cdb96"
@@ -328,8 +378,10 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/integration-system/isp-journal/client",
     "github.com/integration-system/isp-journal/entry",
     "github.com/integration-system/isp-journal/search",
+    "github.com/integration-system/isp-lib/http",
     "github.com/json-iterator/go",
     "github.com/json-iterator/go/extra",
     "github.com/mitchellh/mapstructure",

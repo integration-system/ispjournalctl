@@ -9,7 +9,14 @@
 yum install ispjournalctl
 ```
 ## Конфигурация
-Внешняя конфигурация отсутствует
+Путь к файлу: /etc/ispjournalctl/config.yml
+
+Содержимое файла:
+```yaml
+GateHost: 127.0.0.1:0000
+```
+* `GateHost` - адрес любого isp-journal-service в кластере
+
 ## Использование
 ### Чтение локальных файлов журналов
 ```sh
@@ -19,7 +26,7 @@ ispjournalctl read -h
 Read isp journal file
 
 Usage:
-  ispjournalctl read [flags]
+  ispjournalctl read     [flags]
 
 Flags:
       --event strings   filtered events, format: [--event='event1' --event='event2'], empty: show all
@@ -33,7 +40,32 @@ Flags:
       --until string    until time in format 2018-06-15 [08:15:00]
 ```
 Преобразует данные полученные из `stdin` или файла указанного через флаг `--file`.
-Позваоляет фильтровать записи логов по событиям, уровням логирования, времени.
+Позволяет фильтровать записи логов по событиям, уровням логирования, времени.
+Результаты записываются в `stdout` построчно, в указнном формате.
+### Чтение файлов журналов из isp-journal-service
+```sh
+ispjournalctl search -h
+```
+```sh
+Search isp journal file
+
+UUsage:
+   ispjournalctl search [flags]
+ 
+ Flags:
+       --event strings   filtered events, format: [--event='event1' --event='event2'], empty: show all
+   -h, --help            help for search
+       --host strings    filtered host, format: [--host='host1' --host='host2'], empty: show all
+       --level strings   filtered log levels, format: [--level='OK' --level='WARN', --level='ERROR'], empty: show all
+       --module string   module name
+   -n, --n int           log entries count from start, default: read all (default -1)
+   -o, --out string      output format in csv with ';' or json, example: --out='csv' (default "csv")
+       --since string    since time in format 2018-06-15 [08:15:00]
+       --until string    until time in format 2018-06-15 [08:15:00]
+
+```
+Читает логи указанного модуля `--module` через `isp-journal-service`
+Позволяет фильтровать записи логов по событиям, уровням логирования, времени.
 Результаты записываются в `stdout` построчно, в указнном формате.
 
 #### Пример
@@ -49,6 +81,19 @@ ispjournalctl read --gz --file "10.15.27.48__2019-07-10T06-59-45.655.log.gz"
 ```
 ```csv
 module_name;host;event;level;time;request;response;error_text
+example;111.15.29.48;test;OK;2019-07-09T11:08:32.542+00:00;"{
+        ""objId"": ""e5d7c9ae-93ef-4a12-b35c-e4199d6fd3ec""
+}";"{""timestamp"":1562670512,""random"":521507349,""secureHash"":""3d439713b59e103e0ccd31a7cb9de12f3433fd814f2ae75632261e485b42b4c0"",""code"":[14],""desc"":""OK""}";
+example;111.15.29.48;test;OK;2019-07-09T11:08:47.936+00:00;"{
+        ""objId"": ""92cb4330-ad2c-11e9-a2a3-2a2ae2dbcce4""
+}";"{""timestamp"":1562670527,""random"":719003178,""secureHash"":""11094cfa98f983b12150c2936480160f692b21986afabcea06a70074a562e0c8"",""code"":[14],""desc"":""OK""";
+```
+
+
+```sh
+ispjournalctl search --module 'example' --out 'csv' --since 2018-06-10 -n 1
+```
+```csv
 example;111.15.29.48;test;OK;2019-07-09T11:08:32.542+00:00;"{
         ""objId"": ""e5d7c9ae-93ef-4a12-b35c-e4199d6fd3ec""
 }";"{""timestamp"":1562670512,""random"":521507349,""secureHash"":""3d439713b59e103e0ccd31a7cb9de12f3433fd814f2ae75632261e485b42b4c0"",""code"":[14],""desc"":""OK""}";

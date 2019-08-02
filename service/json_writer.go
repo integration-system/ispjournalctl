@@ -2,6 +2,7 @@ package service
 
 import (
 	"github.com/integration-system/isp-journal/entry"
+	"github.com/integration-system/isp-journal/search"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/json-iterator/go/extra"
 	"github.com/modern-go/reflect2"
@@ -41,9 +42,22 @@ type jsonWriter struct {
 	wr io.WriteCloser
 }
 
-func (w *jsonWriter) Write(entry *entry.Entry) error {
+func (w *jsonWriter) WriteRead(entry *entry.Entry) error {
 	r := row{Entry: entry, Request: string(entry.Request), Response: string(entry.Response)}
 	bytes, err := ji.Marshal(r)
+	if err != nil {
+		return err
+	}
+
+	if _, err := w.wr.Write(append(bytes, '\n')); err != nil {
+		return err
+	} else {
+		return nil
+	}
+}
+
+func (w *jsonWriter) WriteSearch(entry *search.SearchResponse) error {
+	bytes, err := ji.Marshal(entry)
 	if err != nil {
 		return err
 	}
