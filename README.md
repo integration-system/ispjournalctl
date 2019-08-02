@@ -46,7 +46,7 @@ UUsage:
    ispjournalctl search [flags]
  
  Flags:
-   -g, --gate string     gate to isp-journal-service in format 'isp-journal-service'
+   -g, --gate string     gate to isp-journal-service in format '127.0.0.0:0000'
        --event strings   filtered events, format: [--event='event1' --event='event2'], empty: show all
    -h, --help            help for search
        --host strings    filtered host, format: [--host='host1' --host='host2'], empty: show all
