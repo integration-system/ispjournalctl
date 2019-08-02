@@ -2,8 +2,6 @@ package main
 
 import (
 	"ispjournalctl/cmd"
-	"ispjournalctl/config"
-	"ispjournalctl/service"
 )
 
 var (
@@ -11,10 +9,5 @@ var (
 )
 
 func main() {
-	if cfg, err := config.Load(""); err != nil {
-		panic(err)
-	} else {
-		service.JournalServiceClient.ReceiveConfiguration(cfg.GateHost)
-	}
 	cmd.Execute(version)
 }

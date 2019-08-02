@@ -1,6 +1,7 @@
 package command
 
 import (
+	"fmt"
 	domain "github.com/integration-system/isp-journal/search"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
@@ -18,6 +19,7 @@ const (
 var Search searchCmdCfg
 
 type searchCmdCfg struct {
+	Gate   string
 	Module string
 	Since  time.Time
 	Until  time.Time
@@ -37,14 +39,19 @@ func (cfg searchCmdCfg) Run(cmd *cobra.Command, args []string) error {
 		return errors.New("Module name is required")
 	}
 
+	if cfg.Gate == "" {
+		return errors.New("Gate name is required")
+	} else {
+		service.JournalServiceClient.ReceiveConfiguration(cfg.Gate)
+	}
+
 	writer, err := service.NewWriter(cfg.Out, os.Stdout)
 	defer func() { _ = writer.Close() }()
 	if err != nil {
 		return err
 	}
 
-	request := cfg.getSearchRequest()
-	if err := cfg.searchLogs(request, writer, 0, cfg.N); err != nil {
+	if err := cfg.searchLogs(writer); err != nil {
 		return err
 	}
 	return nil
@@ -68,28 +75,33 @@ func (cfg searchCmdCfg) getSearchRequest() domain.SearchRequest {
 	return searchRequest
 }
 
-func (cfg searchCmdCfg) searchLogs(req domain.SearchRequest, writer service.Writer, currentRows, limitRows int) error {
-	if response, err := service.JournalServiceClient.Search(req); err != nil {
-		return err
-	} else {
-		if len(response) == 0 {
-			return nil
-		}
-		for _, value := range response {
-			if currentRows == limitRows {
-				return nil
-			} else {
-				currentRows++
-			}
-			if err := writer.WriteSearch(&value); err != nil {
-				return err
-			}
-		}
-		req.Offset = req.Offset + req.Limit
-		if err := cfg.searchLogs(req, writer, currentRows, limitRows); err != nil {
+func (cfg searchCmdCfg) searchLogs(writer service.Writer) error {
+	req := cfg.getSearchRequest()
+	if req.From.IsZero() { //TODO hack
+		req.From = req.From.Add(1 * time.Second)
+	}
+
+	currentRows := 0
+	for {
+		if response, err := service.JournalServiceClient.Search(req); err != nil {
 			return err
 		} else {
-			return nil
+			if len(response) == 0 {
+				break
+			}
+			for _, value := range response {
+				if currentRows == cfg.N {
+					break
+				} else if err := writer.WriteSearch(&value); err != nil {
+					return err
+				}
+				currentRows++
+			}
+			req.Offset = req.Offset + req.Limit
 		}
 	}
+	if currentRows == 0 {
+		fmt.Println("entries not found")
+	}
+	return nil
 }

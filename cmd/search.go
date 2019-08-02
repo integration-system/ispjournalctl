@@ -13,6 +13,7 @@ var searchCmd = &cobra.Command{
 }
 
 func init() {
+	searchCmd.Flags().StringP("gate", "g", "", "gate to isp-journal-service in format '127.0.0.0:0000'")
 	searchCmd.Flags().String("module", "", "module name")
 	searchCmd.Flags().IntP("n", "n", -1, "log entries count from start, default: read all")
 	searchCmd.Flags().String("since", "", "since time in format 2018-06-15 [08:15:00]")

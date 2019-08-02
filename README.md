@@ -9,14 +9,7 @@
 yum install ispjournalctl
 ```
 ## Конфигурация
-Путь к файлу: /etc/ispjournalctl/config.yml
-
-Содержимое файла:
-```yaml
-GateHost: 127.0.0.1:0000
-```
-* `GateHost` - адрес любого isp-journal-service в кластере
-
+Внешняя конфигурация отсутствует
 ## Использование
 ### Чтение локальных файлов журналов
 ```sh
@@ -53,6 +46,7 @@ UUsage:
    ispjournalctl search [flags]
  
  Flags:
+   -g, --gate string     gate to isp-journal-service in format 'isp-journal-service'
        --event strings   filtered events, format: [--event='event1' --event='event2'], empty: show all
    -h, --help            help for search
        --host strings    filtered host, format: [--host='host1' --host='host2'], empty: show all
@@ -64,7 +58,7 @@ UUsage:
        --until string    until time in format 2018-06-15 [08:15:00]
 
 ```
-Читает логи указанного модуля `--module` через `isp-journal-service`
+Читает логи указанного модуля `--module` подключаясь с помощью `--gate` к `isp-journal-service`
 Позволяет фильтровать записи логов по событиям, уровням логирования, времени.
 Результаты записываются в `stdout` построчно, в указнном формате.
 
@@ -91,7 +85,7 @@ example;111.15.29.48;test;OK;2019-07-09T11:08:47.936+00:00;"{
 
 
 ```sh
-ispjournalctl search --module 'example' --out 'csv' --since 2018-06-10 -n 1
+ispjournalctl search --gate '127.0.0.1:0000' --module 'example' --out 'csv'
 ```
 ```csv
 example;111.15.29.48;test;OK;2019-07-09T11:08:32.542+00:00;"{
