@@ -76,8 +76,7 @@
   revision = "3daf588d878f287976f55a53917d535f787b7d64"
 
 [[projects]]
-  branch = "master"
-  digest = "1:c9c4bc8a6ca2ae80458d630bc0ebe2bb8f434c81fd9c058a0cc0410f4084e706"
+  digest = "1:c9d5618540812e92bb374abb74672c62fc3ee8a5a68bcfed560fb09468872a0d"
   name = "github.com/integration-system/isp-journal"
   packages = [
     "client",
@@ -85,10 +84,11 @@
     "search",
   ]
   pruneopts = "UT"
-  revision = "d5a4a5c363358c5d554fd3c515dbd3d970a23276"
+  revision = "69c5f3135da713d2c2af4192f74a328887afb0e0"
+  version = "v1.1.3"
 
 [[projects]]
-  digest = "1:18c37297dcf9a1506c5feb3ae8c7134aae2a7a108ddd79f92549758d898c5d08"
+  digest = "1:90c5f58f42a573470d479878e9136a1c67ed7f7fedf911ec1a89c6018755560b"
   name = "github.com/integration-system/isp-lib"
   packages = [
     "http",
@@ -96,8 +96,8 @@
     "utils",
   ]
   pruneopts = "UT"
-  revision = "d2cc77b8fb8648ae7f8efdf1d1b834e8e57b56d7"
-  version = "v1.5.2"
+  revision = "50b5d5bd59eaeacc2fd0b63a3b2daae4bbbca563"
+  version = "v1.6.1"
 
 [[projects]]
   digest = "1:ac7f1061abc812a5d0de6df7e3f477cef942aef503848f436da0f0eb2603bfbf"
@@ -111,7 +111,7 @@
   version = "v1.1.7"
 
 [[projects]]
-  digest = "1:823dc0f8e4cdad8d91e6aba4cdd985a035596a8aa02e9d2abf1bec347894c41f"
+  digest = "1:caa1da085cc12cd39d3ddb267434902f621050e1b46f7e9477b2b933df680193"
   name = "github.com/klauspost/compress"
   packages = [
     "flate",
@@ -119,8 +119,8 @@
     "zlib",
   ]
   pruneopts = "UT"
-  revision = "23256797d1e4ccac36fad828362cdfef5b3aeb90"
-  version = "v1.7.4"
+  revision = "2c38f6d2dc5a6a21b6851f2414f4e10adf8e3eee"
+  version = "v1.8.1"
 
 [[projects]]
   digest = "1:923c4d7194b42e054b2eb8a6c62824ac55e23ececc1c7e48d4da69c971c55954"
@@ -155,12 +155,12 @@
   version = "v0.1.2"
 
 [[projects]]
-  digest = "1:9b90c7639a41697f3d4ad12d7d67dfacc9a7a4a6e0bbfae4fc72d0da57c28871"
+  digest = "1:36325ebb862e0382f2f14feef409ba9351271b89ada286ae56836c603d43b59c"
   name = "github.com/mattn/go-isatty"
   packages = ["."]
   pruneopts = "UT"
-  revision = "1311e847b0cb909da63b5fecfb5370aa66236465"
-  version = "v0.0.8"
+  revision = "e1f7b56ace729e4a73a29a6b4fac6cd5fcda7ab3"
+  version = "v0.0.9"
 
 [[projects]]
   branch = "master"
@@ -279,7 +279,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:14263f971ab2057d9d8e0e47a5c9af0ae482c4d2530c47f86e8a247046d5df8e"
+  digest = "1:30fe8021645a9d9966fcede2a59c2e2f498d433687fc5cddd7de85a6a0a44c28"
   name = "github.com/valyala/fasthttp"
   packages = [
     ".",
@@ -287,7 +287,7 @@
     "stackless",
   ]
   pruneopts = "UT"
-  revision = "55ea350c55431331ff77defe5f450331577f64dd"
+  revision = "1241ed7a910a835656961bf69fb8f1fa9cc8b88e"
 
 [[projects]]
   digest = "1:39a425f98fb19427061a693fe6bf0683c9bddec4b25b17067e34fdb465e39cb9"
@@ -303,7 +303,7 @@
   name = "golang.org/x/crypto"
   packages = ["ssh/terminal"]
   pruneopts = "UT"
-  revision = "4def268fd1a49955bfb3dda92fe3db4f924f2285"
+  revision = "60c769a6c58655dab1b9adac0d58967dd517cfba"
 
 [[projects]]
   branch = "master"
@@ -311,18 +311,18 @@
   name = "golang.org/x/net"
   packages = ["context"]
   pruneopts = "UT"
-  revision = "ca1201d0de80cfde86cb01aea620983605dfe99b"
+  revision = "ba9fcec4b297b415637633c5a6e8fa592e4a16c3"
 
 [[projects]]
   branch = "master"
-  digest = "1:16c3c95c0f98e5bff7c863065da66f1e747bced6f101281c041060830842ebc1"
+  digest = "1:c5b5d55096b762e29d0b887ce73932d06ddcf9def4285f1abd09f801176878ec"
   name = "golang.org/x/sys"
   packages = [
     "unix",
     "windows",
   ]
   pruneopts = "UT"
-  revision = "cbf593c0f2f39034e9104bbf77e2ec7c48c98fc5"
+  revision = "c7b8b68b14567162c6602a7c5659ee0f26417c18"
 
 [[projects]]
   digest = "1:1093f2eb4b344996604f7d8b29a16c5b22ab9e1b25652140d3fede39f640d5cd"
@@ -348,10 +348,10 @@
     "googleapis/rpc/status",
   ]
   pruneopts = "UT"
-  revision = "fa694d86fc64c7654a660f8908de4e879866748d"
+  revision = "24fa4b261c55da65468f2abfdae2b024eef27dfb"
 
 [[projects]]
-  digest = "1:caa836d207326da987daf8eb4404ef80806fb843056367d2c3c1636f57ede119"
+  digest = "1:42de3e9a8a8d7d0c7dc0e832f03786c3993c6d97b0e4a18268fb0142cd65e247"
   name = "google.golang.org/grpc"
   packages = [
     "codes",
@@ -363,8 +363,8 @@
     "status",
   ]
   pruneopts = "UT"
-  revision = "045159ad57f3781d409358e3ade910a018c16b30"
-  version = "v1.22.1"
+  revision = "6eaf6f47437a6b4e2153a190160ef39a92c7eceb"
+  version = "v1.23.0"
 
 [[projects]]
   digest = "1:4d2e5a73dc1500038e504a8d78b986630e3626dc027bc030ba5c75da257cdb96"

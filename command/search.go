@@ -1,7 +1,6 @@
 package command
 
 import (
-	"fmt"
 	domain "github.com/integration-system/isp-journal/search"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
@@ -12,7 +11,7 @@ import (
 )
 
 const (
-	limit  = 1000
+	limit  = 5000
 	offset = 0
 )
 
@@ -50,7 +49,6 @@ func (cfg searchCmdCfg) Run(cmd *cobra.Command, args []string) error {
 	if err != nil {
 		return err
 	}
-
 	if err := cfg.searchLogs(writer); err != nil {
 		return err
 	}
@@ -80,18 +78,17 @@ func (cfg searchCmdCfg) searchLogs(writer service.Writer) error {
 	if req.From.IsZero() { //TODO hack
 		req.From = req.From.Add(1 * time.Second)
 	}
-
 	currentRows := 0
 	for {
 		if response, err := service.JournalServiceClient.Search(req); err != nil {
 			return err
 		} else {
 			if len(response) == 0 {
-				break
+				return nil
 			}
 			for _, value := range response {
 				if currentRows == cfg.N {
-					break
+					return nil
 				} else if err := writer.WriteSearch(&value); err != nil {
 					return err
 				}
@@ -100,8 +97,4 @@ func (cfg searchCmdCfg) searchLogs(writer service.Writer) error {
 			req.Offset = req.Offset + req.Limit
 		}
 	}
-	if currentRows == 0 {
-		fmt.Println("entries not found")
-	}
-	return nil
 }
