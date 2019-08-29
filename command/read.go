@@ -43,16 +43,15 @@ func (cfg readCmdCfg) Run(cmd *cobra.Command, args []string) error {
 		Event: cfg.Event,
 		Level: cfg.Level,
 	}
-	if req.From.IsZero() { //TODO hack
-		req.From = req.From.Add(1 * time.Second)
-	}
 	filter, err := domain.NewFilter(req)
 	if err != nil {
 		return err
 	}
 
 	reader, err := domain.NewLogReader(cmd.InOrStdin(), cfg.Gz, filter)
-	defer func() { _ = reader.Close() }()
+	if reader != nil {
+		defer func() { _ = reader.Close() }()
+	}
 	if err != nil {
 		return err
 	}

@@ -1,3 +1,5 @@
+## v1.1.3
+* fix read limit
 ## v1.1.2
 * fix search limit
 ## v1.1.1

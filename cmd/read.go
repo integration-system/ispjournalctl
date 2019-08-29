@@ -22,8 +22,10 @@ func init() {
 	readCmd.Flags().StringSlice("level", []string{}, "filtered log levels, format: [--level='OK' --level='WARN', --level='ERROR'], empty: show all")
 	readCmd.Flags().StringP("out", "o", "csv", "output format in csv with ';' or json, example: --out='csv'")
 
-	if err := viper.BindPFlags(readCmd.Flags()); err != nil {
-		panic(err)
+	readCmd.PreRun = func(cmd *cobra.Command, args []string) {
+		if err := viper.BindPFlags(readCmd.Flags()); err != nil {
+			panic(err)
+		}
 	}
 
 	root.AddCommand(readCmd)

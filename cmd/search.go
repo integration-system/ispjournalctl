@@ -23,9 +23,10 @@ func init() {
 	searchCmd.Flags().StringSlice("level", []string{}, "filtered log levels, format: [--level='OK' --level='WARN', --level='ERROR'], empty: show all")
 	searchCmd.Flags().StringP("out", "o", "csv", "output format in csv with ';' or json, example: --out='csv'")
 
-	if err := viper.BindPFlags(searchCmd.Flags()); err != nil {
-		panic(err)
+	searchCmd.PreRun = func(cmd *cobra.Command, args []string) {
+		if err := viper.BindPFlags(searchCmd.Flags()); err != nil {
+			panic(err)
+		}
 	}
-
 	root.AddCommand(searchCmd)
 }

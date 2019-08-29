@@ -75,9 +75,6 @@ func (cfg searchCmdCfg) getSearchRequest() domain.SearchRequest {
 
 func (cfg searchCmdCfg) searchLogs(writer service.Writer) error {
 	req := cfg.getSearchRequest()
-	if req.From.IsZero() { //TODO hack
-		req.From = req.From.Add(1 * time.Second)
-	}
 	currentRows := 0
 	for {
 		if response, err := service.JournalServiceClient.Search(req); err != nil {
