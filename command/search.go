@@ -11,8 +11,9 @@ import (
 )
 
 const (
-	limit  = 5000
-	offset = 0
+	limit     = 5000
+	offset    = 0
+	batchSize = 5000
 )
 
 var Search searchCmdCfg
@@ -74,16 +75,20 @@ func (cfg searchCmdCfg) getSearchRequest() domain.SearchRequest {
 }
 
 func (cfg searchCmdCfg) searchLogs(writer service.Writer) error {
-	req := cfg.getSearchRequest()
+	request := domain.SearchWithCursorRequest{
+		Request:   cfg.getSearchRequest(),
+		BatchSize: batchSize,
+	}
 	currentRows := 0
+	if cfg.N < batchSize && cfg.N != -1 {
+		request.BatchSize = cfg.N
+	}
 	for {
-		if response, err := service.JournalServiceClient.Search(req); err != nil {
+		response, err := service.JournalServiceClient.SearchWithCursor(request)
+		if err != nil {
 			return err
-		} else {
-			if len(response) == 0 {
-				return nil
-			}
-			for _, value := range response {
+		} else if len(response.Items) > 0 {
+			for _, value := range response.Items {
 				if currentRows == cfg.N {
 					return nil
 				} else if err := writer.WriteSearch(&value); err != nil {
@@ -91,7 +96,11 @@ func (cfg searchCmdCfg) searchLogs(writer service.Writer) error {
 				}
 				currentRows++
 			}
-			req.Offset = req.Offset + req.Limit
+
+		} else if !response.HasMore || len(response.Items) == 0 {
+			return nil
 		}
+		request.CursorId = response.CursorId
+
 	}
 }

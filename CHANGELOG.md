@@ -1,3 +1,5 @@
+## v1.1.4
+* update search with cursor
 ## v1.1.3
 * fix read limit
 ## v1.1.2

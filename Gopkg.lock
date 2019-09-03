@@ -76,7 +76,7 @@
   revision = "3daf588d878f287976f55a53917d535f787b7d64"
 
 [[projects]]
-  digest = "1:3755ce87e6ae6918c3b4c187e406e442860a6c73ff62fda7e1b2f15e10ac6e47"
+  digest = "1:b598267a3d4433bba62613b178b178e21d95a2ec724728ee22e52171c70e2136"
   name = "github.com/integration-system/isp-journal"
   packages = [
     "client",
@@ -84,8 +84,8 @@
     "search",
   ]
   pruneopts = "UT"
-  revision = "9b18ba3cd6dfd94d5979571dae753afec5098e15"
-  version = "v1.2.0"
+  revision = "13eb459c9964997befc886deba4d2dfb2c261b23"
+  version = "v1.3.0"
 
 [[projects]]
   digest = "1:90c5f58f42a573470d479878e9136a1c67ed7f7fedf911ec1a89c6018755560b"
@@ -287,7 +287,7 @@
     "stackless",
   ]
   pruneopts = "UT"
-  revision = "1241ed7a910a835656961bf69fb8f1fa9cc8b88e"
+  revision = "8ce231e840720d91e22f855ddba797b3b916fc75"
 
 [[projects]]
   digest = "1:39a425f98fb19427061a693fe6bf0683c9bddec4b25b17067e34fdb465e39cb9"
@@ -315,14 +315,14 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:c5b5d55096b762e29d0b887ce73932d06ddcf9def4285f1abd09f801176878ec"
+  digest = "1:d94059c196c160bd1c4030d49ffaa39a456be516501e5916bea663f5d79a75ec"
   name = "golang.org/x/sys"
   packages = [
     "unix",
     "windows",
   ]
   pruneopts = "UT"
-  revision = "c7b8b68b14567162c6602a7c5659ee0f26417c18"
+  revision = "9109b7679e13aa34a54834cfb4949cac4b96e576"
 
 [[projects]]
   digest = "1:1093f2eb4b344996604f7d8b29a16c5b22ab9e1b25652140d3fede39f640d5cd"
