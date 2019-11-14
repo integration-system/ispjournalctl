@@ -19,6 +19,8 @@ func NewWriter(t string, wr io.WriteCloser) (Writer, error) {
 		return NewCsvWriter(wr), nil
 	case "json":
 		return NewJsonWriter(wr), nil
+	case "text":
+		return NewTextWriter(wr), nil
 	default:
 		return nil, fmt.Errorf("unknown output format: %v", t)
 	}

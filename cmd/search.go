@@ -21,7 +21,7 @@ func init() {
 	searchCmd.Flags().StringSlice("host", []string{}, "filtered host, format: [--host='host1' --host='host2'], empty: show all")
 	searchCmd.Flags().StringSlice("event", []string{}, "filtered events, format: [--event='event1' --event='event2'], empty: show all")
 	searchCmd.Flags().StringSlice("level", []string{}, "filtered log levels, format: [--level='OK' --level='WARN', --level='ERROR'], empty: show all")
-	searchCmd.Flags().StringP("out", "o", "csv", "output format in csv with ';' or json, example: --out='csv'")
+	searchCmd.Flags().StringP("out", "o", "text", "output format in csv with ';' or json, example: --out='csv'")
 
 	searchCmd.PreRun = func(cmd *cobra.Command, args []string) {
 		if err := viper.BindPFlags(searchCmd.Flags()); err != nil {

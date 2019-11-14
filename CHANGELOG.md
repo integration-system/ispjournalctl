@@ -1,3 +1,5 @@
+## v1.2.0
+* add `text` output format, use as default
 ## v1.1.4
 * update search with cursor
 ## v1.1.3
