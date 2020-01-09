@@ -96,8 +96,8 @@
     "utils",
   ]
   pruneopts = "UT"
-  revision = "9ecfa413468d829dce66fe95562b4366b0dfb2a0"
-  version = "v2.0.0"
+  revision = "abfa9a9776d64e6d04d495bfe00db8ca4dcbe7fc"
+  version = "v2.0.1"
 
 [[projects]]
   branch = "master"
